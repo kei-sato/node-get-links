@@ -39,7 +39,7 @@ function main() {
     if (err) throw err;
     if (!data) return getopt.showHelp();
     const results = parseHtml(data);
-    console.log(results.map(path => {
+    const urls = results.map(path => {
       const regexShort = /^\/\//;
 
       if (path.match(regexProtocol)) return path;
@@ -47,7 +47,8 @@ function main() {
 
       // relative path
       return Url.resolve(prefix, path);
-    }));
+    });
+    console.log(JSON.stringify(urls, null, 2));
   });
 }
 
