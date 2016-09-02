@@ -1,4 +1,6 @@
-# a tool for getting absolute urls from a specific html
+a tool for getting absolute urls from a specific html
+
+# getting started
 
 ```
 $ wget -qO- http://cs224d.stanford.edu/syllabus.html | tee /tmp/html | ./main.js --prefix='http://cs224d.stanford.edu/' | tee /tmp/href
@@ -12,4 +14,12 @@ $ wget -qO- http://cs224d.stanford.edu/syllabus.html | tee /tmp/html | ./main.js
   'http://cs224d.stanford.edu/lecture_notes/notes1.pdf',
   'http://cs231n.github.io/python-numpy-tutorial/',
   'http://cs224d.stanford.edu/lectures/CS224d-Lecture1.pdf',
+```
+
+# example
+
+## download all pdf 
+
+```
+mkdir tmp && wget -qO- http://cs224d.stanford.edu/syllabus.html | tee /tmp/html | ./main.js --prefix='http://cs224d.stanford.edu/' | tee /tmp/href  | jq -r .[] | grep .pdf | xargs wget -P tmp/
 ```
