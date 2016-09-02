@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cheerio": "0.22.0",
+    "node-getopt": "0.2.3"
+  }
+}
